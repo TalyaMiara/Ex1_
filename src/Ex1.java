@@ -1,4 +1,7 @@
 package assignments.ex1;
+
+import java.util.Arrays;
+
 /**
  * This class represents a simple solution for Ex1.
  * As defined here: https://docs.google.com/document/d/1AJ9wtnL1qdEs4DAKqBlO1bXCM6r6GJ_J/r/edit/edit
@@ -20,11 +23,33 @@ public class Ex1 {
          */
         public static int number2Int(String num) {
             int ans = -1;
-            // add your code here
+            String[] arr=num.split("b");
+            String numPart=arr[0];
+            String basePare=arr[1];
+//            if (num==null || num.isEmpty()){
+//                return ans;
+//            }
+//            if (arr.length != 2) {
+//                return -1; //if we don't have 2 splits
+//            }
+//            if (numPart.isEmpty()||basePare.isEmpty()){
+//                return -1;
+//            }
+//להשלים את זה אחכ
 
-            ////////////////////
             return ans;
         }
+        public static int returnNumber(char base){
+            char[] charBaseArr= {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G'};
+            int baseNum= 0;
+            for (int i = 0; i < charBaseArr.length; i++) {
+                if (charBaseArr[i]==base){
+                    baseNum=i;
+                    return i;
+                }
+        }
+
+
         /**
          * This static function checks if the given String (g) is in a valid "number" format.
          * @param a a String representing a number
@@ -32,9 +57,7 @@ public class Ex1 {
          */
         public static boolean isNumber(String a) {
             boolean ans = true;
-            // add your code here
-
-            ////////////////////
+            if(){}
             return ans;
         }
 
