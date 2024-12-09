@@ -15,17 +15,18 @@ import java.util.Arrays;
  * You should implement the following static functions:
  */
 public class Ex1 {
-        /**
-         * Convert the given number (num) to a decimal representation (as int).
-         * It the given number is not in a valid format returns -1.
-         * @param num a String representing a number in basis [2,16]
-         * @return
-         */
-        public static int number2Int(String num) {
-            int ans = -1;
-            String[] arr=num.split("b");
-            String numPart=arr[0];
-            String basePare=arr[1];
+    /**
+     * Convert the given number (num) to a decimal representation (as int).
+     * It the given number is not in a valid format returns -1.
+     *
+     * @param num a String representing a number in basis [2,16]
+     * @return
+     */
+    public static int number2Int(String num) {
+        int ans = -1;
+        String[] arr = num.split("b");
+        String numPart = arr[0];
+        String basePare = arr[1];
 //            if (num==null || num.isEmpty()){
 //                return ans;
 //            }
@@ -37,29 +38,58 @@ public class Ex1 {
 //            }
 //להשלים את זה אחכ
 
-            return ans;
-        }
-        public static int returnNumber(char base){
-            char[] charBaseArr= {'0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G'};
-            int baseNum= 0;
-            for (int i = 0; i < charBaseArr.length; i++) {
-                if (charBaseArr[i]==base){
-                    baseNum=i;
-                    return i;
-                }
-        }
+        return ans;
+    }
 
+    public static int returnNumber(char base) {
+        char[] charBaseArr = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G'};
+        int baseNum = 0;
+        for (int i = 0; i < charBaseArr.length; i++) {
+            if (charBaseArr[i] == base) {
+                baseNum = i;
+                return i;
+            }
+        }
+        return -1;
+    }
 
         /**
          * This static function checks if the given String (g) is in a valid "number" format.
          * @param a a String representing a number
          * @return true iff the given String is in a number format
          */
-        public static boolean isNumber(String a) {
+        public static boolean isNumber1 (String a){
             boolean ans = true;
-            if(){}
+            if(a.isEmpty()||a==null){
+                return !ans;
+            }
+            char[] arrOfChars= a.toCharArray();
+            for (int i = 0; i < arrOfChars.length; i++) {
+                if (arrOfChars[i]==' ') {
+                    return !ans;
+                }
+            }
             return ans;
         }
+    public static boolean isNumber2 (String [] b){
+        boolean ans = true;
+        if (b.length !=2){
+            return  !ans;
+        }
+        String num=b[0];
+        String base=b[1];
+        if (num.isEmpty()){
+        return !ans;
+        }
+        if(!base.matches(".*[a-zA-Z].*")){
+            int convertedBase= Integer.parseInt(base);
+            if(convertedBase>9) {
+                return !ans;
+        }
+        }
+        return ans;
+    }
+
 
         /**
          * Calculate the number representation (in basis base)
@@ -69,7 +99,7 @@ public class Ex1 {
          * @param base the basis [2,16]
          * @return a String representing a number (in base) equals to num, or an empty String (in case of wrong input).
          */
-        public static String int2Number(int num, int base) {
+        public static String int2Number ( int num, int base){
             String ans = "";
             // add your code here
 
@@ -83,7 +113,7 @@ public class Ex1 {
          * @param n2 second number
          * @return true iff the two numbers have the same values.
          */
-        public static boolean equals(String n1, String n2) {
+        public static boolean equals (String n1, String n2){
             boolean ans = true;
             // add your code here
 
@@ -99,11 +129,14 @@ public class Ex1 {
          * @return the index in the array in with the largest number (in value).
          *
          */
-        public static int maxIndex(String[] arr) {
+        public static int maxIndex (String[]arr){
             int ans = 0;
             // add your code here
 
             ////////////////////
             return ans;
         }
-}
+    }
+
+
+
