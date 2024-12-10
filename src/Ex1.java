@@ -63,14 +63,18 @@ public class Ex1 {
             if(a.isEmpty()||a==null){
                 return !ans;
             }
-            char[] arrOfChars= a.toCharArray();
-            for (int i = 0; i < arrOfChars.length; i++) {
-                if (arrOfChars[i]==' ') {
-                    return !ans;
-                }
+//            char[] arrOfChars= a.toCharArray();
+//            for (int i = 0; i < arrOfChars.length; i++) {
+//                if (arrOfChars[i]==' ') {
+//                    return !ans;
+//                }
+//            }
+            if (a.contains(" ")){
+                return !ans;
             }
             return ans;
         }
+
     public static boolean isNumber2 (String [] b){
         boolean ans = true;
         if (b.length !=2){
@@ -90,6 +94,17 @@ public class Ex1 {
         return ans;
     }
 
+    public static boolean isNumber3 (int base, int num){
+            boolean answer=true;
+            if (base<2 || base>16 || num<0){
+                return  false;
+            }
+            if (num>=base){
+                return false;
+            }
+            return answer;
+    }
+
 
         /**
          * Calculate the number representation (in basis base)
@@ -101,9 +116,16 @@ public class Ex1 {
          */
         public static String int2Number ( int num, int base){
             String ans = "";
-            // add your code here
-
-            ////////////////////
+            int temporary;
+            StringBuilder str=new StringBuilder();
+            while (num>0){
+                temporary= num%base;
+                num=num/base;
+                str.append(temporary);
+            }
+            String resTemp= str.toString();
+            String reverseString= new StringBuilder(resTemp).reverse().toString();
+            ans= reverseString + 'b' +base;
             return ans;
         }
 
