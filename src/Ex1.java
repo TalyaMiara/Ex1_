@@ -68,48 +68,48 @@ public class Ex1 {
             if(a.isEmpty()||a==null){
                 return !ans;
             }
-//            char[] arrOfChars= a.toCharArray();
-//            for (int i = 0; i < arrOfChars.length; i++) {
-//                if (arrOfChars[i]==' ') {
-//                    return !ans;
-//                }
-//            }
-            if (a.contains(" ")){
-                return !ans;
-            }
-            return ans;
-        }
-
-    public static boolean isNumber2 (String [] b){
-        boolean ans = true;
-        if (b.length !=2){
-            return  !ans;
-        }
-        String num=b[0];
-        String base=b[1];
-        if (num.isEmpty()){
-        return !ans;
-        }
-        if(!base.matches(".*[a-zA-Z].*")){
-            int convertedBase= Integer.parseInt(base);
-            if(convertedBase>9) {
-                return !ans;
-        }
-        }
-        return ans;
-    }
-
-    public static boolean isNumber3 (int base, int num){
-            boolean answer=true;
-            if (base<2 || base>16 || num<0){
-                return  false;
-            }
-            if (num>=base){
+            if (!a.matches("^[A-Gb0-9]+$")){
                 return false;
             }
-            return answer;
-    }
+            if (a.matches(".*[0-9].*")&& !a.matches(".*[A-Zb].*")){
+                return true;
+            }
+            if (a.matches(".*[A-Z].*")&& !a.matches(".*[0-9b].*")){
+                return false;
+            }
+            if (a.charAt(a.length()-2)!= 'b'){
+                return false;
+            }
+            String [] arr= a.split("b");
+            String numPart= arr[0];
+            String basePart= arr[1];
+            if (arr.length != 2){
+                return false;
+            }
+            if (numPart.isEmpty()|| basePart.isEmpty()){
+                return false;
+            }
+            if (!basePart.matches(".*[A-G].*")){
+                int base= Integer.parseInt(basePart);
+                if (base>9){
+                    return false;
+                }
+            }
+            char baseChar= basePart.charAt(0);
+            int base= returnNumber(baseChar);
+            char [] arrOfChars= numPart.toCharArray();
+            for (int i = 0; i < arrOfChars.length; i++) {
+                int numBase= returnNumber(arrOfChars[arrOfChars.length-1-i]);
+                if (base>16|| base<2 ||numBase<0) {
+                    return false;
+                }
+                    if (numBase>= base) {
+                        return false;
 
+                    }
+                }
+            return true;
+            }
 
         /**
          * Calculate the number representation (in basis base)
@@ -120,9 +120,9 @@ public class Ex1 {
          * @return a String representing a number (in base) equals to num, or an empty String (in case of wrong input).
          */
         public static String int2Number ( int num, int base){
-            String ans = "";
             int max=16;
             int min=2;
+            String ans = "";
             if (base>max ||base<min){
                 return ans;
             }
@@ -160,15 +160,15 @@ public class Ex1 {
          * This static function search for the array index with the largest number (in value).
          * In case there are more than one maximum - returns the first index.
          * Note: you can assume that the array is not null and is not empty, yet it may contain null or none-valid numbers (with value -1).
-         * @param arr an array of numbers
+         * @param add, multiply an array of numbers
          * @return the index in the array in with the largest number (in value).
          *
          */
-        public static int maxIndex (String[]arr){
-            int ans = 0;
-           if ()
-            return ans;
-        }
+//        public static int maxIndex (int numOne, int numTwo,){
+//            int ans = 0;
+//           if ()
+//            return ans;
+//        }
     }
 
 
