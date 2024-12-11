@@ -148,10 +148,12 @@ public class Ex1 {
          */
         public static boolean equals (String n1, String n2){
             boolean ans = true;
-            // add your code here
-
-            ////////////////////
-            return ans;
+            int firstNum=number2Int(n1);
+            int secondNum=number2Int(n2);
+            if (firstNum == secondNum){
+                return ans;
+            }
+            else return false;
         }
 
         /**
