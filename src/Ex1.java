@@ -24,22 +24,27 @@ public class Ex1 {
      */
     public static int number2Int(String num) {
         int ans = -1;
-        String[] arr = num.split("b");
-        String numPart = arr[0];
-        String basePare = arr[1];
-//            if (num==null || num.isEmpty()){
-//                return ans;
-//            }
-//            if (arr.length != 2) {
-//                return -1; //if we don't have 2 splits
-//            }
-//            if (numPart.isEmpty()||basePare.isEmpty()){
-//                return -1;
-//            }
-//להשלים את זה אחכ
-
-        return ans;
+        if(isNumber(num)){
+            if (num.matches(".*[0-9].*")&&!num.matches(".*[A-Z].*")){
+                int dec= Integer.parseInt(num);
+                return dec;
+            }
+            String[] arr = num.split("b");
+            String numPart = arr[0];
+            String basePare = arr[1];
+            char theBsaePaer= basePare.charAt(0);
+            int numBase= returnNumber(theBsaePaer);
+            char[] arrayOfChars=numPart.toCharArray();
+            int calculate=0;
+            for (int i = 0; i < arrayOfChars.length; i++) {
+                int base=returnNumber(arrayOfChars[arrayOfChars.length-1-i]);
+                calculate+=(int) (base*(Math.pow(numBase, i)));
+            }
+            return calculate;
+        }
+        else return ans;
     }
+
 
     public static int returnNumber(char base) {
         char[] charBaseArr = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G'};
@@ -58,7 +63,7 @@ public class Ex1 {
          * @param a a String representing a number
          * @return true iff the given String is in a number format
          */
-        public static boolean isNumber1 (String a){
+        public static boolean isNumber (String a){
             boolean ans = true;
             if(a.isEmpty()||a==null){
                 return !ans;
@@ -116,6 +121,12 @@ public class Ex1 {
          */
         public static String int2Number ( int num, int base){
             String ans = "";
+            int max=16;
+            int min=2;
+            if (base>max ||base<min){
+                return ans;
+            }
+
             int temporary;
             StringBuilder str=new StringBuilder();
             while (num>0){
@@ -125,7 +136,7 @@ public class Ex1 {
             }
             String resTemp= str.toString();
             String reverseString= new StringBuilder(resTemp).reverse().toString();
-            ans= reverseString + 'b' +base;
+            ans= reverseString + "b" +base;
             return ans;
         }
 
@@ -153,9 +164,7 @@ public class Ex1 {
          */
         public static int maxIndex (String[]arr){
             int ans = 0;
-            // add your code here
-
-            ////////////////////
+           if ()
             return ans;
         }
     }
