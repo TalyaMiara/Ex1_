@@ -160,15 +160,17 @@ public class Ex1 {
          * This static function search for the array index with the largest number (in value).
          * In case there are more than one maximum - returns the first index.
          * Note: you can assume that the array is not null and is not empty, yet it may contain null or none-valid numbers (with value -1).
-         * @param add, multiply an array of numbers
+         * @param add,multiply an array of numbers
          * @return the index in the array in with the largest number (in value).
          *
          */
-//        public static int maxIndex (int numOne, int numTwo,){
-//            int ans = 0;
-//           if ()
-//            return ans;
-//        }
+        public static void maxIndex (int numOne, int numTwo,int add, int multiply, String oneAdd, String oneMultiply) {
+            int ans = 0;
+            if (add >= multiply) {
+                System.out.println("max number over[" + numOne + "," + numTwo + "," + oneAdd + "," + oneMultiply + "] is" + oneAdd);
+            } else
+                System.out.println("max number over[" + numOne + "," + numTwo + "," + oneAdd + "," + oneMultiply + "] is" + oneMultiply);
+        }
     }
 
 

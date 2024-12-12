@@ -1,4 +1,5 @@
 package assignments.ex1;
+import org.junit.Test;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -36,7 +37,14 @@ public class Ex1Test {
         }
         @Test
         void int2NumberTest() {
-           // implement this test
+           int [] numArr= {5, 12, 10, 20, 48};
+           String[] resInBinary={"101b2", "1100b2","1010b2","10100b2","110000b2"};
+           int baseNum= 2;
+            for (int i = 0; i < numArr.length; i++) {
+                String realRes= Ex1.int2Number(numArr[i],baseNum);
+                assertEquals(resInBinary[i],realRes);
+
+            }
         }
         @Test
         void maxIndexTest() {
