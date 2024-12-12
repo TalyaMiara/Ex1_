@@ -55,8 +55,14 @@ public class Ex1Main {
             int multNum= firstNum*secondNum;
             String oneAdd;
             String oneMult;
-            oneAdd= Ex1.int2Number(addingNum,multNum);
-
+            oneAdd= Ex1.int2Number(addingNum,theBaseNumber);
+            oneMult=Ex1.int2Number(multNum, theBaseNumber);
+            if (oneAdd.equals(" ")|| oneMult.equals(" ")){
+                System.out.println("ERR: wrong base, should be [2,16], got" +theBaseNumber);
+                continue;
+            }
+            System.out.println(num1+ "+" +num2 + "+" + oneAdd);
+            System.out.println(num1+ "+" + num2+ "+" +oneMult);
         }
 
     }
