@@ -4,8 +4,15 @@ import java.util.Arrays;
 
 /**
  * This class represents a simple solution for Ex1.
- * This assignment focuses on number conversion and validation over bases [2-16].
- * Supports various operations like conversion, validation, and equality checks for formatted numbers.
+ * As defined here: https://docs.google.com/document/d/1AJ9wtnL1qdEs4DAKqBlO1bXCM6r6GJ_J/r/edit/edit
+ * In this assignment, we will design a number formatting converter and calculator.
+ * In general, we will use Strings as numbers over basis of binary till Hexa.
+ * [2-16], 10-16 are represented by A,B,..G.
+ * The general representation of the numbers is as a String with the following format:
+ * <number><b><base> e.g., “135bA” (i.e., “135”, as 10 is the default base), “100111b2”, “12345b6”,”012b5”, “123bG”, “EFbG”.
+ * The following are NOT in the format (not a valid number):
+ * “b2”, “0b1”, “123b”, “1234b11”, “3b3”, “-3b5”, “3 b4”, “GbG”, "", null,
+ * You should implement the following static functions:
  */
 public class Ex1 {
     /**
@@ -17,27 +24,26 @@ public class Ex1 {
      */
     public static int number2Int(String num) {
         int ans = -1;
-        if (isNumber(num)) {
-            // If the number only contains digits, parse it directly
-            if (num.matches(".*[0-9].*") && !num.matches(".*[A-Z].*")) {
+        if(isNumber(num)) {
+            if (num.matches(".*[0-9].*") && !num.matches(".*[A-Zb].*")) { // return the number in case of decimal
                 int dec = Integer.parseInt(num);
                 return dec;
             }
-            // Split the number into value and base
             String[] arr = num.split("b");
-            String numPart = arr[0];
-            String basePart = arr[1];
-            char baseChar = basePart.charAt(0);
-            int numBase = returnNumber(baseChar);
-            char[] arrayOfChars = numPart.toCharArray();
-            int calculate = 0;
-            // Iterate through each character to compute the decimal value
-            for (int i = 0; i < arrayOfChars.length; i++) {
-                int base = returnNumber(arrayOfChars[arrayOfChars.length - 1 - i]);
-                calculate += (int) (base * (Math.pow(numBase, i)));
+            String partNumber = arr[0];
+            String partBase = arr[1];
+            char baseChar = partBase.charAt(0);
+            int base = returnNumber(baseChar);
+            char[] charArray = partNumber.toCharArray();
+            int sum = 0;
+            for (int i = 0; i < charArray.length; i++) {
+                int numBase = returnNumber(charArray[charArray.length - 1 - i]);
+                sum += (int) (numBase * (Math.pow(base, i)));
             }
-            return calculate;
-        } else return ans;
+            return sum;
+        }
+        else
+            return ans;
     }
 
     /**
@@ -49,8 +55,10 @@ public class Ex1 {
      */
     public static int returnNumber(char base) {
         char[] charBaseArr = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F', 'G'};
+        int baseNum=0;
         for (int i = 0; i < charBaseArr.length; i++) {
             if (charBaseArr[i] == base) {
+                baseNum=i;
                 return i;
             }
         }
@@ -65,7 +73,9 @@ public class Ex1 {
      * @return true if the string is valid, false otherwise.
      */
     public static boolean isNumber(String a) {
-        if (a == null || a.isEmpty()) return false;
+        if (a == null || a.isEmpty()) {
+            return false;
+        }
 
         // Check if the string contains only allowed characters
         if (!a.matches("^[A-Gb0-9]+$")) {
