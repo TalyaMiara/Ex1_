@@ -76,21 +76,23 @@ public class Ex1 {
         if (a == null || a.isEmpty()) {
             return false;
         }
+        // Ensure 'b' is at the second-to-last position
+        if (a.charAt(a.length() - 2) != 'b') {
+            return false;
+        }
 
         // Check if the string contains only allowed characters
         if (!a.matches("^[A-Gb0-9]+$")) {
             return false;
         }
-        // Check for numbers without 'b' or with invalid base/digits
-        if (a.matches(".*[0-9].*") && !a.matches(".*[A-Zb].*")) {
-            return true;
-        }
+
         if (a.matches(".*[A-Z].*") && !a.matches(".*[0-9b].*")) {
             return false;
         }
-        // Ensure 'b' is at the second-to-last position
-        if (a.charAt(a.length() - 2) != 'b') {
-            return false;
+
+        // Check for numbers without 'b' or with invalid base/digits
+        if (a.matches(".*[0-9].*") && !a.matches(".*[A-Zb].*")) {
+            return true;
         }
 
         String[] arr = a.split("b");
