@@ -12,13 +12,13 @@ public class Ex1Main {
     public static void main(String[] args) {
         Scanner sc1 = new Scanner(System.in);
         String num1 = "", num2="", quit = "quit";
+        int firstNum=0;
+        int secondNum=0;
         while (!num1.equals(quit) && !num2.equals(quit)) {
             System.out.println();
             System.out.println("Ex1 class solution:");
             System.out.println("Enter a string as number#1 (or \"quit\" to end the program): ");
             num1 = sc1.next();
-            int firstNum=0;
-            int secondNum=0;
             if (!num1.equals("quit")) {
                 firstNum = Ex1.number2Int(num1);
                 if (firstNum != -1) {
@@ -28,12 +28,36 @@ public class Ex1Main {
                     continue;
                 }
             }
+            if (num1.equals("quit")){
+                System.out.println("quiting now...");
+                System.exit(0);
+            }
+            Scanner sc2=new Scanner(System.in);
+            System.out.println("Enter a string as number#1 (or \"quit\" to end the program): ");
+            num2= sc2.next();
+            if (!num2.equals("quit")){
+                secondNum=Ex1.number2Int(num2);
+                if (firstNum != -1) {
+                    System.out.println("num2=" + num2 + "is number:true, value:" + secondNum);
+                } else {
+                    System.out.println("ERR: num2 is in the wrong format!(" + num2 + ")");
+                    continue;
+                }
+            }
+            if (num2.equals("quit")){
+                System.out.println("quiting now...");
+                System.exit(0);
+            }
+            Scanner sc3=new Scanner(System.in);
+            System.out.println("Enter a base for output: (a number [2,16]");
+            int theBaseNumber= sc3.nextInt();
+            int addingNum= firstNum+secondNum;
+            int multNum= firstNum*secondNum;
+            String oneAdd;
+            String oneMult;
+            oneAdd= Ex1.int2Number(addingNum,multNum);
+
         }
-        if (num1.equals("quit")){
-            System.out.println("quiting now...");
-            System.exit(0);
-        }
-        Scanner sc2=new Scanner(System.in);
 
     }
 }
